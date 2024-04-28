@@ -14,7 +14,7 @@ public class Manager : MonoBehaviour
     [SerializeField] private Text Coin_left;
     [SerializeField] private Text Timer;
     [SerializeField] private GameObject Win;
-    public static int Coin_Exist = 2;
+    public static int Coin_Exist = 10;
     float elapsedTime;
     // Start is called before the first frame update
     private void Awake()

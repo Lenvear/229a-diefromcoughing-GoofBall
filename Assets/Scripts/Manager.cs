@@ -14,7 +14,8 @@ public class Manager : MonoBehaviour
     [SerializeField] private Text Coin_left;
     [SerializeField] private Text Timer;
     [SerializeField] private GameObject Win;
-    public static int Coin_Exist = 10;
+    public static int Coin_Exist = 2;
+    float elapsedTime;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class Manager : MonoBehaviour
 
     void Start()
     {
-        Coin_left.text = "Coin uncollected " + Coin_Exist.ToString() + " Left";
+        Coin_left.text = "Coin Uncollected " + Coin_Exist.ToString() + " Left";
     }
 
     // Update is called once per frame
@@ -39,11 +40,16 @@ public class Manager : MonoBehaviour
             Win.SetActive(true);
             Game_Win = true;
         }
+
+        elapsedTime += Time.deltaTime;
+        int minutes = Mathf.FloorToInt(elapsedTime / 60);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60);
+        Timer.text = String.Format("{00:00}:{1:00}", minutes,seconds);
     }
-    public void Pin_Down()
+    public void Coin_Get()
     {
         Coin_Exist -= 1;
-        Coin_left.text = "Pin Need to Hit " + Coin_Exist.ToString() + " Left";
+        Coin_left.text = "Coin Uncollected " + Coin_Exist.ToString() + " Left";
     }
     public void RestartButton()
     {
